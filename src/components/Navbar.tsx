@@ -6,14 +6,13 @@ const Navbar = () => {
     <div className="navbar bg-[url('/images/abstract-background.svg')] bg-cover bg-center border-b mt-5">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-neutral-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
-              </svg>
-          </div>
+        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-neutral-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+            </svg>
+        </div>
           <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-50  bg-base-100 rounded-box w-52">
-            <li><Link href="/" className="text-neutral font-medium text-lg">Home</Link></li>
-            <li><Link href="/resume" className="text-neutral font-medium text-lg">Resume</Link></li>
+            <li><a href="#resume" className="text-neutral font-medium text-lg">Resume</a></li>
             <li><a href="#projects" className="text-neutral font-medium text-lg">Projects</a></li>
           </ul>
         </div>
@@ -30,9 +29,8 @@ const Navbar = () => {
             height={125}
             className="mx-2 border-2 border-primary"
           />
-          <div className="text-neutral-900 font-medium text-lg">Main</div>
+          <div className="text-neutral-900 font-medium text-lg">Home</div>
         </a>
-        
         <ul className="menu menu-horizontal px-1">
           <li className="dropdown dropdown-hover hidden lg:block">
             <div tabIndex={0} role="button" className="text-neutral font-medium text-lg">
@@ -40,36 +38,36 @@ const Navbar = () => {
             </div>
             <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
               <li>
-                <Link href="/store" className="text-neutral font-medium">
+                <Link href="/projects/store-fun" className="text-neutral font-medium">
                   Store Example
                 </Link>
               </li>
               <li>
-                <Link href="/school" className="text-neutral font-medium">
+                <Link href="/projects/school-fun" className="text-neutral font-medium">
                   School Example
                 </Link>
               </li>
             </ul>
-          </li>
+    </li>
          
-          {/* Mobile version with click */}
-          <li className="dropdown lg:hidden">
-            <details>
-              <summary className="text-neutral font-medium text-lg">Projects</summary>
-              <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                <li>
-                  <Link href="/store" className="text-neutral font-medium">
-                    Store Example
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/school" className="text-neutral font-medium">
-                    School Example
-                  </Link>
-                </li>
-              </ul>
-            </details>
-          </li>
+  {/* Mobile version with click */}
+  <li className="dropdown lg:hidden">
+    <details>
+      <summary className="text-neutral font-medium text-lg">Projects</summary>
+      <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+        <li>
+          <Link href="/projects/store-fun" className="text-neutral font-medium">
+            Store Example
+          </Link>
+        </li>
+        <li>
+          <Link href="/projects/school-fun" className="text-neutral font-medium">
+            School Example
+          </Link>
+        </li>
+      </ul>
+    </details>
+  </li>
 </ul>
       </div>
       <div className="navbar-end">

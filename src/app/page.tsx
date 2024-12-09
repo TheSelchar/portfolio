@@ -25,17 +25,34 @@ export default function Home() {
               <p className="mb-4">
                 <label className="font-bold text-lg">A little more about me:</label>
               </p>
-              I'm a husband, father of one gifted and loving son (which can be a little challenging at times lol), and a I'm bit of a geek. 
-              I love to learn and share knowledge. I'm a bit of a minimalist and I love to software and website that are useful and help people.
+              <p>I'm a husband, father of one gifted and loving son (which can be a little challenging at times lol), and a I'm bit of a geek. 
+              I love to learn and share knowledge, a bit of a minimalist and I love to architect software and website that are useful and help people.
+              </p>
+              <p>
+                I have servered 2400 hours in Americops and been a volunteer for my local community.  I believe in giving the opportunity we all can 
+                make a difference in the world and achieve success.  I'm a big believer in the power of mentorship and collaboration and I'm always looking for ways to help others grow.
+                For me, leadership is a calling being in a leadership role is not about being the best, but about being the best servant.  I'm a big believer in servant leadership and I'm always looking for ways to help others grow.
+              </p>
               <hr className="my-4" />
               
               <label className="font-bold text-lg">Explore my website:</label>
               <p className="mb-4 mt-4">
               </p>
-              This website is a collection of fun projects just to keep my skills sharp and not to be used in a production environment. 
-              I am always adding to it and updating it, so please check back often. 
-              Also if you have any questions or comments, please feel free to reach out to me.
+              <p>
+                I built this website to keep my skills sharp and no code here is been fully tested and not to be used in a production environment. 
+                I am always adding to it and updating it, so please check back often and if there's somethign you like to see me do please let me know. 
+                Also if you have any questions or comments, please feel free to reach out to me.
               You can also visit my <a href="https://www.linkedin.com/in/charlesgrahamii/" target="_blank" rel="noopener noreferrer" className="btn-link p-0 m-0">LinkedIn profile</a>.
+              </p>
+              <div className="mt-4">
+                <b>Things I'm heads down mastering:</b>
+                <ul className="pl-4">
+                  <li>Digital transformation strategies</li>
+                  <li>Business Process Automation</li>
+                  <li>AI-driven data transformation</li>
+                  <li>Python, Blazor, Docker, Kubernetes</li>
+                </ul>
+              </div>
               <hr className="my-4" />
               <label className="font-bold text-lg">Technologies & Skills I'm familiar with:</label>
               <div className="mb-4 mt-4">
