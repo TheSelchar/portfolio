@@ -3,7 +3,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-interface Product {
+export interface Product {
   id: number;
   title: string;
   price: number;
@@ -58,7 +58,7 @@ export const useCartStore = create<CartStore>()(
               : item
           ),
         })),
-      moveToWishlist: (product) => {
+      moveToWishlist: (_product) => {
         // This will be implemented after connecting with wishlistStore
       },
       getItemCount: () => {
@@ -72,6 +72,7 @@ export const useCartStore = create<CartStore>()(
     }),
     {
       name: 'cart-storage',
+      skipHydration: true
     }
   )
 ); 

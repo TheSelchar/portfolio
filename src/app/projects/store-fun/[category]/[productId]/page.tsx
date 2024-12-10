@@ -25,11 +25,10 @@ type Props = {
     category: string;
     productId: string;
   }>;
-  searchParams: { [key: string]: string | string[] | undefined };
 };
 
-export default async function ProductPage({ params, searchParams }: Props) {
-  const { productId, category } = await params;
+export default async function ProductPage({ params }: Props) {
+  const { productId } = await params;
   const product: Product = await getProduct(productId);
   
   // Calculate estimated delivery dates (12-18 days from now)

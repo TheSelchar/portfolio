@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect } from 'react';
-import Image from "next/image";
+import { useState } from 'react';
 import FavoriteBooks from '../components/FavoriteBooks';
 import PhotoHeart from '../components/PhotoHeart';
+import Image from 'next/image';
+import { AIChat } from '@/components/AIChat';
+
 export default function Home() {
   return (
     <main className="min-h-screen p-8 bg-[url('/images/abstract-background.svg')] bg-cover bg-center">
@@ -11,7 +13,7 @@ export default function Home() {
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Left Side - About Me Section */}
           <div className="bg-base-100 p-8 rounded-lg shadow-xl bg-opacity-90">
-            <h1 className="text-4xl font-bold mb-4 text-neutral-900">Charles Graham II</h1>
+            <h1 className="text-3xl font-bold mb-4 text-neutral-900">Charles Graham II</h1>
             <div className="prose text-neutral-800">
               <p className="mb-4">
               Welcome to my portfolio! I'm a passionate and innovative software manager with a love 
@@ -39,10 +41,11 @@ export default function Home() {
               <p className="mb-4 mt-4">
               </p>
               <p>
-                I built this website to keep my skills sharp and no code here is been fully tested and not to be used in a production environment. 
+                <b>Disclaimer:</b> I built this website to keep my skills sharp and no code here is been fully tested and not to be used in a production environment. 
+                Also all links do not work, nor do I intend to make them work, so please don't be alarmed if a link doesn't work. 
                 I am always adding to it and updating it, so please check back often and if there's somethign you like to see me do please let me know. 
                 Also if you have any questions or comments, please feel free to reach out to me.
-              You can also visit my <a href="https://www.linkedin.com/in/charlesgrahamii/" target="_blank" rel="noopener noreferrer" className="btn-link p-0 m-0">LinkedIn profile</a>.
+              You can also visit my <a href="https://www.linkedin.com/in/charles-graham-781b0214/" target="_blank" rel="noopener noreferrer" className="btn-link p-0 m-0">LinkedIn profile</a>.
               </p>
               <div className="mt-4">
                 <b>Things I'm heads down mastering:</b>
@@ -50,6 +53,7 @@ export default function Home() {
                   <li>Digital transformation strategies</li>
                   <li>Business Process Automation</li>
                   <li>AI-driven data transformation</li>
+                  <li>Openapi, Pinecone, Langchain, LlamaIndex</li>
                   <li>Python, Blazor, Docker, Kubernetes</li>
                 </ul>
               </div>
@@ -80,11 +84,18 @@ export default function Home() {
           </div>
 
           {/* Right Side - Image Grid */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="card bg-base-100 shadow-xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Shaper Article Card - Full width on mobile */}
+            <div className="card bg-base-100 shadow-xl md:col-span-1 col-span-full">
               <figure className="px-10 pt-10">
                 <a href="https://www.linkedin.com/pulse/shaper-leading-empathy-integrity-charles-graham-bn7bc/?trackingId=Dkg8zQrLQvmVAdp1brFlNA%3D%3D" target="_blank" rel="noopener noreferrer">
-                  <img src="/images/shaper.png" alt="Shoes" className="rounded-xl" />
+                  <Image 
+                    src="/images/shaper.png" 
+                    alt="Shoes" 
+                    width={500}
+                    height={300}
+                    className="rounded-xl w-full" 
+                  />
                 </a>
               </figure>
               <div className="card-body items-center text-center">
@@ -95,16 +106,20 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            {/* Favorite books */}
-            <div id="favorite-books" className="card bg-base-100 shadow-xl">
+
+            {/* Favorite books - Full width on mobile */}
+            <div id="favorite-books" className="card bg-base-100 shadow-xl md:col-span-1 col-span-full">
               <FavoriteBooks />
             </div>
-            <div id="image-grid" className="card bg-base-100 shadow-xl col-span-2">
+
+            {/* Photo Heart - Always full width */}
+            <div id="image-grid" className="card bg-base-100 shadow-xl col-span-full h-[400px] md:h-[600px]">
               <PhotoHeart />
             </div>
           </div>
         </div>
       </div>
+      <AIChat />
     </main>
   );
 }

@@ -1,6 +1,3 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { WishlistButton } from '../components/WishlistButton';
 import { WishlistClient } from './WishlistClient';
 
 export default function WishlistPage() {

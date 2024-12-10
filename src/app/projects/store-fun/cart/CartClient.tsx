@@ -5,13 +5,14 @@ import { useWishlistStore } from '../stores/wishlistStore';
 import { ImageWithFallback } from '../components/ImageWithFallback';
 import Link from 'next/link';
 import { useState } from 'react';
+import { Product } from '../stores/cartStore';
 
 export function CartClient() {
   const { items, removeItem, updateQuantity, getSubtotal } = useCartStore();
   const { addItem: addToWishlist } = useWishlistStore();
   const [removingItemId, setRemovingItemId] = useState<number | null>(null);
 
-  const handleMoveToWishlist = (item: any) => {
+  const handleMoveToWishlist = (item: Product) => {
     setRemovingItemId(item.id);
     setTimeout(() => {
       addToWishlist(item);

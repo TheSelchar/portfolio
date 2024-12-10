@@ -1,9 +1,9 @@
 'use client';
 
-import Image from 'next/image';
-import Link from 'next/link';
 import { useWishlistStore } from '../stores/wishlistStore';
+import { ImageWithFallback } from '../components/ImageWithFallback';
 import { WishlistButton } from '../components/WishlistButton';
+import Link from 'next/link';
 
 export function WishlistClient() {
   const { items } = useWishlistStore();
@@ -25,7 +25,7 @@ export function WishlistClient() {
           <figure className="relative mb-4 mx-auto overflow-hidden flex items-center justify-center bg-white border border-neutral-100">
             <div className="relative w-full">
               <div className="aspect-[5/2]">
-                <Image
+                <ImageWithFallback
                   src={product.image}
                   alt={product.title}
                   width={500}
@@ -36,7 +36,7 @@ export function WishlistClient() {
               </div>
             </div>
             <WishlistButton 
-              product={product} 
+              product={product}
               className="absolute top-2 right-2"
             />
           </figure>

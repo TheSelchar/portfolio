@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import Link from 'next/link';
+import { AIChat } from '@/components/AIChat';
 
 const ResumePage: FC = () => {
   return (
@@ -8,7 +9,7 @@ const ResumePage: FC = () => {
       {/* Download Button */}
       <div className="flex justify-end mb-6">
         <Link 
-          href="/docs/CharlesLGrahamResume_Full.docx" 
+          href="/docs/CharlesLGrahamResume_Full.pdf" 
           target="_blank"
           className="btn btn-primary"
         >
@@ -221,6 +222,7 @@ const ResumePage: FC = () => {
           </div>
         </section>
       </div>
+      <AIChat />
     </div>
     </div>
   );

@@ -13,7 +13,6 @@ const FavoriteBooks = () => {
       if (currentSlide) currentSlide.removeAttribute('data-active');
       if (nextSlide) {
         nextSlide.setAttribute('data-active', 'true');
-        const slideWidth = nextSlide.clientWidth;
         carousel?.scrollTo({
           left: nextSlide.offsetLeft,
           behavior: 'smooth'

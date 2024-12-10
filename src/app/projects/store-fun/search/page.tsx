@@ -30,28 +30,29 @@ async function searchProducts(query: string) {
 }
 
 interface PageProps {
-  searchParams: { 
+  searchParams: Promise<{ 
     q: string;
     category?: string;
     sort?: 'price-asc' | 'price-desc' | 'name-asc' | 'name-desc';
-  };
+  }>;
 }
 
 export default async function SearchPage({ searchParams }: PageProps) {
-  const query = searchParams.q || '';
+  const params = await searchParams;
+  const query = params.q || '';
   let products = await searchProducts(query);
 
   // Apply category filter
-  if (searchParams.category) {
+  if (params.category) {
     products = products.filter(product => 
-      product.category.toLowerCase() === searchParams.category?.toLowerCase()
+      product.category.toLowerCase() === params.category?.toLowerCase()
     );
   }
 
   // Apply sorting
-  if (searchParams.sort) {
+  if (params.sort) {
     products = [...products].sort((a, b) => {
-      switch (searchParams.sort) {
+      switch (params.sort) {
         case 'price-asc':
           return a.price - b.price;
         case 'price-desc':
@@ -80,7 +81,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
           <div className="w-full md:w-64 flex-shrink-0">
             <SearchFilters 
               categories={categories} 
-              selectedCategory={searchParams.category}
+              selectedCategory={params.category}
             />
           </div>
 
@@ -90,7 +91,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
               <h1 className="text-2xl font-medium text-neutral-900">
                 Search Results for "{query}"
               </h1>
-              <SortOptions selected={searchParams.sort} />
+              <SortOptions selected={params.sort} />
             </div>
 
             {products.length === 0 ? (

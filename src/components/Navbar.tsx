@@ -21,7 +21,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">
           <li><Link href="/resume" className="text-neutral font-medium text-lg">Resume</Link></li>
         </ul>
-        <a href="/" className="flex flex-col items-center">
+        <Link href="/" className="flex flex-col items-center">
           <Image
             src="/images/af_img.jpg"
             alt="AF Logo"
@@ -29,8 +29,8 @@ const Navbar = () => {
             height={125}
             className="mx-2 border-2 border-primary"
           />
-          <div className="text-neutral-900 font-medium text-lg">Home</div>
-        </a>
+          <div className="text-neutral-900 font-medium text-lg">Main</div>
+        </Link>
         <ul className="menu menu-horizontal px-1">
           <li className="dropdown dropdown-hover hidden lg:block">
             <div tabIndex={0} role="button" className="text-neutral font-medium text-lg">
@@ -72,7 +72,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
       <a 
-          href="https://www.linkedin.com/in/charles-l-graham-ii/" 
+          href="https://www.linkedin.com/in/charles-graham-781b0214/" 
           className="" 
           target="_blank" 
           rel="noopener noreferrer"
