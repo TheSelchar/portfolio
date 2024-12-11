@@ -18,12 +18,13 @@
     "@langchain/pinecone": "^0.1.3",
     "@pinecone-database/pinecone": "^4.0.0",
     "daisyui": "^4.12.14",
+    "dotenv": "^16.4.7",
     "framer-motion": "^11.0.3",
     "langchain": "^0.3.6",
     "next": "15.0.4",
     "pdf-parse": "^1.1.1",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "zustand": "^5.0.2"
   },
   "devDependencies": {

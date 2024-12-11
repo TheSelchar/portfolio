@@ -1,79 +1,72 @@
+"use client";
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <div className="navbar bg-[url('/images/abstract-background.svg')] bg-cover bg-center border-b mt-5">
+      {/* Mobile Menu Button */}
       <div className="navbar-start">
         <div className="dropdown">
-        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-neutral-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+          <button 
+            className="btn btn-ghost lg:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+            <svg className="h-5 w-5 text-neutral-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
             </svg>
-        </div>
-          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-50  bg-base-100 rounded-box w-52">
-            <li><a href="#resume" className="text-neutral font-medium text-lg">Resume</a></li>
-            <li><a href="#projects" className="text-neutral font-medium text-lg">Projects</a></li>
-          </ul>
+          </button>
+          {/* Mobile Menu */}
+          {isMenuOpen && (
+            <ul className="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow bg-base-100 rounded-box w-52">
+              <li><Link href="/resume" onClick={() => setIsMenuOpen(false)}>Resume</Link></li>
+              <li>
+                <span>Projects</span>
+                <ul className="p-2 bg-base-100">
+                  <li><Link href="/projects/store-fun" onClick={() => setIsMenuOpen(false)}>Store Example</Link></li>
+                  <li><Link href="/projects/school-fun" onClick={() => setIsMenuOpen(false)}>School Example</Link></li>
+                </ul>
+              </li>
+            </ul>
+          )}
         </div>
       </div>
+
+      {/* Desktop Menu */}
       <div className="navbar-center hidden lg:flex items-center">
         <ul className="menu menu-horizontal px-1">
-          <li><Link href="/resume" className="text-neutral font-medium text-lg">Resume</Link></li>
+          <li><Link href="/resume">Resume</Link></li>
         </ul>
-        <Link href="/" className="flex flex-col items-center">
+        <Link href="/" className="flex flex-col items-center mx-4">
           <Image
             src="/images/af_img.jpg"
             alt="AF Logo"
             width={125}
             height={125}
-            className="mx-2 border-2 border-primary"
+            className="border-2 border-primary"
           />
           <div className="text-neutral-900 font-medium text-lg">Main</div>
         </Link>
         <ul className="menu menu-horizontal px-1">
-          <li className="dropdown dropdown-hover hidden lg:block">
-            <div tabIndex={0} role="button" className="text-neutral font-medium text-lg">
-              Projects
-            </div>
+          <li className="dropdown dropdown-hover">
+            <span tabIndex={0}>Projects</span>
             <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-              <li>
-                <Link href="/projects/store-fun" className="text-neutral font-medium">
-                  Store Example
-                </Link>
-              </li>
-              <li>
-                <Link href="/projects/school-fun" className="text-neutral font-medium">
-                  School Example
-                </Link>
-              </li>
+              <li><Link href="/projects/store-fun">Store Example</Link></li>
+              <li><Link href="/projects/school-fun">School Example</Link></li>
             </ul>
-    </li>
-         
-  {/* Mobile version with click */}
-  <li className="dropdown lg:hidden">
-    <details>
-      <summary className="text-neutral font-medium text-lg">Projects</summary>
-      <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-        <li>
-          <Link href="/projects/store-fun" className="text-neutral font-medium">
-            Store Example
-          </Link>
-        </li>
-        <li>
-          <Link href="/projects/school-fun" className="text-neutral font-medium">
-            School Example
-          </Link>
-        </li>
-      </ul>
-    </details>
-  </li>
-</ul>
+          </li>
+        </ul>
       </div>
+
+      {/* Right Side - Social Links */}
       <div className="navbar-end">
-      <a 
+        <a 
           href="https://www.linkedin.com/in/charles-graham-781b0214/" 
-          className="" 
+          className="hidden md:block" 
           target="_blank" 
           rel="noopener noreferrer"
         >

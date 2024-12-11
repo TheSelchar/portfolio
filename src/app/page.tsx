@@ -40,9 +40,11 @@ export default function Home() {
               <label className="font-bold text-lg">Explore my website:</label>
               <p className="mb-4 mt-4">
               </p>
-              <p>
+              <p className="mb-4 text-red-500">
                 <b>Disclaimer:</b> I built this website to keep my skills sharp and no code here is been fully tested and not to be used in a production environment. 
-                Also all links do not work, nor do I intend to make them work, so please don't be alarmed if a link doesn't work. 
+                Also all links do not work, nor do I intend to make them all work, so please don't be alarmed if a link doesn't work.
+              </p>
+              <p>
                 I am always adding to it and updating it, so please check back often and if there's somethign you like to see me do please let me know. 
                 Also if you have any questions or comments, please feel free to reach out to me.
               You can also visit my <a href="https://www.linkedin.com/in/charles-graham-781b0214/" target="_blank" rel="noopener noreferrer" className="btn-link p-0 m-0">LinkedIn profile</a>.
@@ -78,8 +80,11 @@ export default function Home() {
                 </ul>
               </div>
               <hr className="my-4" />
-              <label className="font-bold text-sm flex flex-row flex-wrap">Used in this site: React, Next.js, Tailwind CSS, DaisyUI, Typescript, kubernetes, docker, Google Cloud</label>
-              
+              <label className="text-sm flex flex-row flex-wrap">
+                <span className="font-bold mr-2">Used in this site: </span> React, Next.js, Tailwind CSS, DaisyUI, Typescript, kubernetes, docker, Google Cloud
+                <br/>
+                OpenAI, Pinecone, Langchain, LlamaIndex
+              </label>
             </div>
           </div>
 

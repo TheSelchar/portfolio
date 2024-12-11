@@ -1,11 +1,10 @@
+import 'dotenv/config';
 import { Pinecone } from '@pinecone-database/pinecone';
-
-const PINECONE_API_KEY = 'pcsk_knrit_GEE2PiFqLFZEAF6szsBiQLkbYa4NiMp5e57VsWLS7m46fHgdsdKxU9WPPEYx3oS';
 
 async function createIndex() {
   try {
     const pinecone = new Pinecone({
-      apiKey: PINECONE_API_KEY
+      apiKey: process.env.PINECONE_API_KEY!
     });
 
     await pinecone.createIndex({
