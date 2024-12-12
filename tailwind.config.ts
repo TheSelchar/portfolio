@@ -15,6 +15,9 @@ const config: Config = {
       backgroundColor: {
         'custom-gray': '#e6e6e6',
       },
+      fontFamily: {
+        'dancing-script': ['Dancing Script', 'cursive'],
+      },
     },
   },
   plugins: [

@@ -9,6 +9,7 @@ interface Message {
 }
 
 const SUGGESTED_QUESTIONS = [
+  "Can I see Charles Graham's resume?",
   "What's your leadership philosophy?",
   "Tell me about your technical skills",
   "What are some fun facts about you?",
@@ -33,16 +34,33 @@ export function AIChat() {
     scrollToBottom();
   }, [messages, isLoading]);
 
+  const handleResumeDownload = () => {
+    window.open('/docs/CharlesLGrahamResume_Full.pdf', '_blank');
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
 
     const userMessage: Message = { role: 'user', content: input };
-    setMessages(prev => [...prev, userMessage] as Message[]);
+    setMessages(prev => [...prev, userMessage]);
     setInput('');
     setIsLoading(true);
 
     try {
+      // Check for resume download request
+      if (input.toLowerCase().includes('resume') && 
+          (input.toLowerCase().includes('download') || input.toLowerCase().includes('view'))) {
+        handleResumeDownload();
+        setMessages(prev => [...prev, {
+          role: 'assistant',
+          content: "I've opened my resume in a new tab for you. Is there anything specific you'd like to know about my experience?"
+        }]);
+        setIsLoading(false);
+        return;
+      }
+
+      // Existing API call for other messages
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
