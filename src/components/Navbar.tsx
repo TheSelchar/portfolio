@@ -35,12 +35,13 @@ const Navbar = () => {
             </ul>
           )}
         </div>
-        
       </div>
 
       {/* Desktop Menu */}
-      <div className="navbar-center  items-center">
-        
+      <div className="navbar-center lg:flex items-center">
+        <ul className="menu menu-horizontal px-1 hidden lg:flex">
+          <li><Link href="/resume">Resume</Link></li>
+        </ul>
         <Link href="/" className="flex flex-col items-center mx-4">
           <Image
             src="/images/af_img.jpg"
@@ -49,9 +50,17 @@ const Navbar = () => {
             height={125}
             className="border-2 border-primary"
           />
-          <div className="text-neutral-900 font-medium text-lg">Home</div>
+          <div className="text-neutral-900 font-medium text-lg hidden lg:flex">Main</div>
         </Link>
-        
+        <ul className="menu menu-horizontal px-1 hidden lg:flex">
+          <li className="dropdown dropdown-hover">
+            <span tabIndex={0}>Projects</span>
+            <ul className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+              <li><Link href="/projects/store-fun">Store Example</Link></li>
+              <li><Link href="/projects/school-fun">School Example</Link></li>
+            </ul>
+          </li>
+        </ul>
       </div>
 
       {/* Right Side - Social Links */}
