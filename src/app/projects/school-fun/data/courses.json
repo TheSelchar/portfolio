@@ -1,0 +1,422 @@
+{
+  "courses": [
+    {
+      "id": "BUS001",
+      "title": "Business Analytics Fundamentals",
+      "description": "Learn to make data-driven business decisions through analytics",
+      "longDescription": "Master the fundamentals of business analytics and learn how to leverage data for strategic decision-making. This course covers essential statistical concepts, data visualization techniques, and predictive modeling to help you transform raw data into actionable business insights.",
+      "image": "/images/school/business-analytics.png",
+      "length": "8 weeks",
+      "enrollBy": "May 30, 2024",
+      "cost": "$799",
+      "hoursPerWeek": "5-6",
+      "modules": [
+        {
+          "title": "Introduction to Business Analytics",
+          "topics": [
+            "Understanding the Analytics Landscape",
+            "Data-Driven Decision Making",
+            "Analytics Tools and Technologies"
+          ]
+        },
+        {
+          "title": "Data Analysis Techniques",
+          "topics": [
+            "Statistical Analysis Methods",
+            "Data Visualization",
+            "Predictive Modeling Basics"
+          ]
+        },
+        {
+          "title": "Business Applications",
+          "topics": [
+            "Marketing Analytics",
+            "Financial Analysis",
+            "Operations Analytics"
+          ]
+        }
+      ],
+      "learningStyle": "hybrid"
+    },
+    {
+      "id": "BUS002",
+      "title": "Strategic Management",
+      "description": "Develop and implement effective business strategies",
+      "longDescription": "Learn how to create and execute successful business strategies in today's dynamic environment. This course provides frameworks for analyzing competitive landscapes, making strategic decisions, and implementing organizational change.",
+      "image": "/images/school/strategic-management.png",
+      "length": "10 weeks",
+      "enrollBy": "June 15, 2024",
+      "cost": "$899",
+      "hoursPerWeek": "6-8",
+      "modules": [
+        {
+          "title": "Strategic Analysis",
+          "topics": [
+            "Industry Analysis",
+            "Competitive Positioning",
+            "Market Assessment"
+          ]
+        },
+        {
+          "title": "Strategy Formulation",
+          "topics": [
+            "Business Model Innovation",
+            "Corporate Strategy",
+            "Growth Strategies"
+          ]
+        },
+        {
+          "title": "Strategy Implementation",
+          "topics": [
+            "Organizational Alignment",
+            "Change Management",
+            "Performance Monitoring"
+          ]
+        }
+      ],
+      "learningStyle": "instructor-led"
+    },
+    {
+      "id": "MKT001",
+      "title": "Digital Marketing Essentials",
+      "description": "Master modern digital marketing strategies and tools",
+      "longDescription": "Comprehensive introduction to digital marketing, covering the latest tools, platforms, and strategies. Learn to create effective campaigns, measure performance, and optimize for better results across digital channels.",
+      "image": "/images/school/digital-marketing.png",
+      "length": "6 weeks",
+      "enrollBy": "May 25, 2024",
+      "cost": "$699",
+      "hoursPerWeek": "4-5",
+      "modules": [
+        {
+          "title": "Digital Marketing Foundations",
+          "topics": [
+            "Digital Marketing Overview",
+            "Customer Journey Mapping",
+            "Channel Strategy"
+          ]
+        },
+        {
+          "title": "Content and SEO",
+          "topics": [
+            "Content Strategy",
+            "SEO Best Practices",
+            "Content Distribution"
+          ]
+        },
+        {
+          "title": "Social Media Marketing",
+          "topics": [
+            "Platform Strategy",
+            "Content Creation",
+            "Analytics and Optimization"
+          ]
+        }
+      ],
+      "learningStyle": "self-paced"
+    },
+    {
+      "id": "MKT002",
+      "title": "Brand Management",
+      "description": "Build and manage strong brands in the digital age",
+      "longDescription": "Learn the principles and practices of successful brand management. Develop skills in brand strategy, positioning, and communication to build lasting brand value in today's competitive marketplace.",
+      "image": "/images/school/brand-management.png",
+      "length": "8 weeks",
+      "enrollBy": "June 1, 2024",
+      "cost": "$799",
+      "hoursPerWeek": "5-6",
+      "modules": [
+        {
+          "title": "Brand Strategy",
+          "topics": [
+            "Brand Positioning",
+            "Brand Architecture",
+            "Brand Equity"
+          ]
+        },
+        {
+          "title": "Brand Communication",
+          "topics": [
+            "Messaging Strategy",
+            "Visual Identity",
+            "Brand Voice"
+          ]
+        },
+        {
+          "title": "Digital Brand Management",
+          "topics": [
+            "Social Media Branding",
+            "Content Strategy",
+            "Brand Monitoring"
+          ]
+        }
+      ],
+      "learningStyle": "hybrid"
+    },
+    {
+      "id": "MKT003",
+      "title": "Marketing Analytics",
+      "description": "Use data to drive marketing decisions",
+      "longDescription": "Learn to leverage data analytics for marketing decision-making. Master the tools and techniques for measuring marketing performance, understanding customer behavior, and optimizing marketing campaigns.",
+      "image": "/images/school/marketing-analytics.png",
+      "length": "8 weeks",
+      "enrollBy": "June 30, 2024",
+      "cost": "$849",
+      "hoursPerWeek": "6-7",
+      "modules": [
+        {
+          "title": "Marketing Metrics",
+          "topics": [
+            "Key Performance Indicators",
+            "Attribution Modeling",
+            "ROI Analysis"
+          ]
+        },
+        {
+          "title": "Customer Analytics",
+          "topics": [
+            "Customer Segmentation",
+            "Behavioral Analysis",
+            "Lifetime Value Calculation"
+          ]
+        },
+        {
+          "title": "Campaign Analytics",
+          "topics": [
+            "A/B Testing",
+            "Campaign Optimization",
+            "Performance Reporting"
+          ]
+        }
+      ],
+      "learningStyle": "hybrid"
+    },
+    {
+      "id": "BS001",
+      "title": "Strategic Leadership",
+      "description": "Develop effective leadership skills for organizational success",
+      "longDescription": "Master the art of strategic leadership in today's dynamic business environment. Learn to lead with vision, build high-performing teams, and drive organizational change. This comprehensive course combines leadership theory with practical applications.",
+      "image": "/images/school/strategic-leadership.png",
+      "length": "10 weeks",
+      "enrollBy": "July 15, 2024",
+      "cost": "$899",
+      "hoursPerWeek": "6-8",
+      "modules": [
+        {
+          "title": "Leadership Fundamentals",
+          "topics": [
+            "Leadership Styles and Theory",
+            "Emotional Intelligence",
+            "Building High-Performance Teams"
+          ]
+        },
+        {
+          "title": "Strategic Decision Making",
+          "topics": [
+            "Critical Thinking",
+            "Problem-Solving Frameworks",
+            "Decision Analysis"
+          ]
+        },
+        {
+          "title": "Organizational Leadership",
+          "topics": [
+            "Change Management",
+            "Team Development",
+            "Performance Leadership"
+          ]
+        }
+      ],
+      "learningStyle": "instructor-led"
+    },
+    {
+      "id": "BS002",
+      "title": "Corporate Strategy",
+      "description": "Master strategic planning and execution",
+      "longDescription": "Learn to develop and implement corporate strategies that create sustainable competitive advantage. This course covers strategic analysis, planning, and execution with a focus on practical applications in real-world business scenarios.",
+      "image": "/images/school/corporate-strategy.png",
+      "length": "8 weeks",
+      "enrollBy": "June 30, 2024",
+      "cost": "$849",
+      "hoursPerWeek": "5-7",
+      "modules": [
+        {
+          "title": "Strategic Analysis",
+          "topics": [
+            "External Environment Analysis",
+            "Internal Capability Assessment",
+            "Competitive Analysis"
+          ]
+        },
+        {
+          "title": "Strategy Development",
+          "topics": [
+            "Value Creation",
+            "Growth Strategies",
+            "Portfolio Management"
+          ]
+        },
+        {
+          "title": "Strategy Implementation",
+          "topics": [
+            "Resource Allocation",
+            "Performance Measurement",
+            "Strategic Control"
+          ]
+        }
+      ],
+      "learningStyle": "hybrid"
+    },
+    {
+      "id": "BS003",
+      "title": "Global Business Strategy",
+      "description": "Navigate international business challenges",
+      "longDescription": "Develop strategies for success in the global business environment. Learn to analyze international markets, manage cross-cultural teams, and create effective global business strategies.",
+      "image": "/images/school/global-business.png",
+      "length": "12 weeks",
+      "enrollBy": "July 30, 2024",
+      "cost": "$999",
+      "hoursPerWeek": "7-8",
+      "modules": [
+        {
+          "title": "Global Business Environment",
+          "topics": [
+            "International Market Analysis",
+            "Global Economic Forces",
+            "Cross-Cultural Management"
+          ]
+        },
+        {
+          "title": "Global Strategy",
+          "topics": [
+            "Market Entry Strategies",
+            "Global Value Chains",
+            "International Partnerships"
+          ]
+        },
+        {
+          "title": "Global Operations",
+          "topics": [
+            "International Operations",
+            "Global Supply Chain",
+            "Risk Management"
+          ]
+        }
+      ],
+      "learningStyle": "instructor-led"
+    },
+    {
+      "id": "BI001",
+      "title": "Innovation Management",
+      "description": "Drive business growth through innovation",
+      "longDescription": "Learn to foster and manage innovation in organizations. Develop skills in creative problem-solving, design thinking, and implementing innovative solutions that drive business growth.",
+      "image": "/images/school/innovation-management.png",
+      "length": "8 weeks",
+      "enrollBy": "June 20, 2024",
+      "cost": "$799",
+      "hoursPerWeek": "5-6",
+      "modules": [
+        {
+          "title": "Innovation Fundamentals",
+          "topics": [
+            "Innovation Types and Process",
+            "Design Thinking",
+            "Creative Problem Solving"
+          ]
+        },
+        {
+          "title": "Innovation Strategy",
+          "topics": [
+            "Innovation Portfolio",
+            "Open Innovation",
+            "Innovation Metrics"
+          ]
+        },
+        {
+          "title": "Implementation",
+          "topics": [
+            "Innovation Culture",
+            "Project Management",
+            "Change Implementation"
+          ]
+        }
+      ],
+      "learningStyle": "hybrid"
+    },
+    {
+      "id": "BI002",
+      "title": "Digital Transformation",
+      "description": "Lead digital change initiatives",
+      "longDescription": "Master the principles and practices of digital transformation. Learn to leverage emerging technologies, redesign business processes, and lead organizational change in the digital age.",
+      "image": "/images/school/digital-transformation.png",
+      "length": "10 weeks",
+      "enrollBy": "July 10, 2024",
+      "cost": "$899",
+      "hoursPerWeek": "6-7",
+      "modules": [
+        {
+          "title": "Digital Technologies",
+          "topics": [
+            "Emerging Technologies",
+            "Digital Trends",
+            "Technology Assessment"
+          ]
+        },
+        {
+          "title": "Business Transformation",
+          "topics": [
+            "Process Redesign",
+            "Digital Business Models",
+            "Customer Experience"
+          ]
+        },
+        {
+          "title": "Change Leadership",
+          "topics": [
+            "Digital Culture",
+            "Change Management",
+            "Digital Capability Building"
+          ]
+        }
+      ],
+      "learningStyle": "instructor-led"
+    },
+    {
+      "id": "BI003",
+      "title": "Entrepreneurship",
+      "description": "Build and scale successful ventures",
+      "longDescription": "Develop entrepreneurial skills and mindset needed to build successful ventures. Learn startup methodologies, business model development, and growth strategies for new businesses.",
+      "image": "/images/school/entrepreneurship.png",
+      "length": "12 weeks",
+      "enrollBy": "August 1, 2024",
+      "cost": "$999",
+      "hoursPerWeek": "8-10",
+      "modules": [
+        {
+          "title": "Venture Creation",
+          "topics": [
+            "Opportunity Recognition",
+            "Business Model Canvas",
+            "Market Validation"
+          ]
+        },
+        {
+          "title": "Startup Strategy",
+          "topics": [
+            "Lean Startup Method",
+            "Product Development",
+            "Go-to-Market Strategy"
+          ]
+        },
+        {
+          "title": "Growth and Scaling",
+          "topics": [
+            "Growth Strategies",
+            "Funding Options",
+            "Team Building"
+          ]
+        }
+      ],
+      "learningStyle": "hybrid"
+    }
+  ]
+} 

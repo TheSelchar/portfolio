@@ -1,0 +1,28 @@
+{
+  "subjects": [
+    {
+      "id": "CAT001",
+      "title": "Business Essentials",
+      "description": "Learn business essentials by interpreting data to inform decisions, exploring the economic foundations of strategy, and discovering what's behind the numbers in financial statements.",
+      "courses": ["BUS001", "BUS002"]
+    },
+    {
+      "id": "CAT002",
+      "title": "Marketing",
+      "description": "Gain the latest tools, frameworks, and trends to acquire and retain customers, position your brand for success, and develop data-driven marketing strategies.",
+      "courses": ["MKT001", "MKT002", "MKT003"]
+    },
+    {
+      "id": "CAT003",
+      "title": "Business Strategy",
+      "description": "Develop the global perspective, quantitative background, and creative problem-solving skills to take your strategy from formulation to execution.",
+      "courses": ["BS001", "BS002", "BS003"]
+    },
+    {
+      "id": "CAT004",
+      "title": "Business Innovation",
+      "description": "Learn how to assess new business opportunities, harness innovation, and transform your idea into a viable venture.",
+      "courses": ["BI001", "BI002", "BI003"]
+    }
+  ]
+} 

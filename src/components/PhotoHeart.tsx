@@ -18,7 +18,7 @@ interface Photo {
 const PhotoHeart = () => {
   const [mounted, setMounted] = useState(false);
   const [focusedId, setFocusedId] = useState<number | null>(null);
-  const isMobile = useMediaQuery('(max-width: 768px)');
+  const isMobile = useMediaQuery('(max-width: 1024px)');
 
   useEffect(() => {
     setMounted(true);
@@ -84,55 +84,57 @@ const PhotoHeart = () => {
 
   if (isMobile) {
     return (
-      <div>
-          <div className="grid grid-cols-3 gap-2 p-4">
-            {mobilePhotos.map((photo) => (
-              <div
-                key={photo.id}
-                className="aspect-square relative"
-                onClick={() => setFocusedId(focusedId === photo.id ? null : photo.id)}
-              >
-                <Image
-                  src={photo.src}
-                  alt={photo.alt}
-                  fill
-                  className={`object-cover rounded-sm shadow-lg cursor-pointer border-2 border-white transition-transform duration-300
-                    ${focusedId === photo.id ? 'scale-150 z-50' : 'hover:scale-110 z-10'}
-                  `}
-                  sizes="(max-width: 768px) 33vw, 80px"
-                  priority
-                />
-              </div>
-            ))}
-          </div>
-          <div className="bottom-20 left-0 right-0 mx-auto px-4 mb-5 max-w-[100%] text-center font-dancing-script text-2xl">
-            In the warmth of family, love is always welcome, hearts are always open, and spirits are always light.
-          </div>
-    </div>
+      <div className="relative w-full h-full overflow-hidden">
+        <div className="absolute inset-0 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 gap-1 p-2">
+          {mobilePhotos.map((photo) => (
+            <div
+              key={photo.id}
+              className="aspect-square relative"
+              onClick={() => setFocusedId(focusedId === photo.id ? null : photo.id)}
+            >
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                className={`object-cover rounded-sm shadow-lg cursor-pointer border-2 border-white transition-transform duration-300
+                  ${focusedId === photo.id ? 'scale-150 z-50' : 'hover:scale-110 z-10'}
+                `}
+                sizes="(max-width: 768px) 33vw, 80px"
+                priority
+              />
+            </div>
+          ))}
+        </div>
+        <div className="bottom-20 left-0 right-0 mx-auto px-4 mb-5 max-w-[100%] text-center font-dancing-script text-2xl">
+          In the warmth of family, love is always welcome, hearts are always open, and spirits are always light.
+        </div>
+      </div>
     );
   }
 
   return (
-    <div className="relative w-full h-[600px] ml-5">
-      {desktopPhotos.map((photo) => (
-        <div
-          key={photo.id}
-          className="absolute ml-10"
-          style={photo.style}
-          onClick={() => setFocusedId(focusedId === photo.id ? null : photo.id)}
-        >
-          <Image
-            src={photo.src}
-            alt={photo.alt}
-            width={80}
-            height={80}
-            className={`rounded-sm shadow-lg cursor-pointer border-4 border-white object-cover transition-transform duration-300
-              ${focusedId === photo.id ? 'scale-150 z-50' : 'hover:scale-125 z-10'}
-            `}
-            priority
-          />
-        </div>
-      ))}
+    <div className="relative w-full h-full overflow-hidden">
+      <div className="absolute inset-0 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 gap-1 p-2">
+        {desktopPhotos.map((photo) => (
+          <div
+            key={photo.id}
+            className="absolute ml-10"
+            style={photo.style}
+            onClick={() => setFocusedId(focusedId === photo.id ? null : photo.id)}
+          >
+            <Image
+              src={photo.src}
+              alt={photo.alt}
+              width={80}
+              height={80}
+              className={`rounded-sm shadow-lg cursor-pointer border-4 border-white object-cover transition-transform duration-300
+                ${focusedId === photo.id ? 'scale-150 z-50' : 'hover:scale-125 z-10'}
+              `}
+              priority
+            />
+          </div>
+        ))}
+      </div>
       <div className="absolute bottom-20 left-0 right-0 mx-auto px-4 max-w-[80%] text-center font-dancing-script text-2xl">
          In the warmth of family, love is always welcome, hearts are always open, and spirits are always light.
       </div>

@@ -50,7 +50,7 @@ const Navbar = () => {
             height={125}
             className="border-2 border-primary"
           />
-          <div className="text-neutral-900 font-medium text-lg hidden lg:flex">Main</div>
+          <div className="text-neutral-900 font-medium text-lg hidden lg:flex">Home</div>
         </Link>
         <ul className="menu menu-horizontal px-1 hidden lg:flex">
           <li className="dropdown dropdown-hover">

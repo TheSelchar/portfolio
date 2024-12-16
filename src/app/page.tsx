@@ -27,10 +27,10 @@ export default function Home() {
               <p className="mb-4">
                 <label className="font-bold text-lg">A little more about me:</label>
               </p>
-              <p>I'm a husband, father of one gifted and loving son (which can be a little challenging at times lol), and a I'm bit of a geek. 
+              <p className="mb-4">I'm a husband, father of one gifted and loving son (which can be a little challenging at times lol), and a I'm bit of a geek. 
               I love to learn and share knowledge, a bit of a minimalist and I love to architect software and website that are useful and help people.
               </p>
-              <p>
+              <p className="mb-4">
                 I have servered 2400 hours in Americops and been a volunteer for my local community.  I believe in giving the opportunity we all can 
                 make a difference in the world and achieve success.  I'm a big believer in the power of mentorship and collaboration and I'm always looking for ways to help others grow.
                 For me, leadership is a calling being in a leadership role is not about being the best, but about being the best servant.  I'm a big believer in servant leadership and I'm always looking for ways to help others grow.
@@ -42,10 +42,10 @@ export default function Home() {
               </p>
               <p className="mb-4 text-red-500">
                 <b>Disclaimer:</b> I built this website to keep my skills sharp and no code here is been fully tested and not to be used in a production environment. 
-                Also all links do not work, nor do I intend to make them all work, so please don't be alarmed if a link doesn't work.
+                Also all links do not work in my personal projects (I just do the time to build our a feature full working product), so please don't be alarmed if a link or button does not work.
               </p>
               <p>
-                I am always adding to it and updating it, so please check back often and if there's somethign you like to see me do please let me know. 
+                I am always adding to it and updating it, so please check back often and if there's somethign you like to see me do build let me know. 
                 Also if you have any questions or comments, please feel free to reach out to me.
               You can also visit my <a href="https://www.linkedin.com/in/charles-graham-781b0214/" target="_blank" rel="noopener noreferrer" className="btn-link p-0 m-0">LinkedIn profile</a>.
               </p>
@@ -91,7 +91,7 @@ export default function Home() {
           {/* Right Side - Image Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Shaper Article Card - Full width on mobile */}
-            <div className="card bg-base-100 shadow-xl md:col-span-1 col-span-full">
+            <div className="card bg-base-100 shadow-xl col-span-full">
               <figure className="px-10 pt-10">
                 <a href="https://www.linkedin.com/pulse/shaper-leading-empathy-integrity-charles-graham-bn7bc/?trackingId=Dkg8zQrLQvmVAdp1brFlNA%3D%3D" target="_blank" rel="noopener noreferrer">
                   <Image 
@@ -113,7 +113,7 @@ export default function Home() {
             </div>
 
             {/* Favorite books - Full width on mobile */}
-            <div id="favorite-books" className="card bg-base-100 shadow-xl md:col-span-1 col-span-full">
+            <div id="favorite-books" className="card bg-base-100 shadow-xl col-span-full">
               <FavoriteBooks />
             </div>
 

@@ -9,13 +9,12 @@ interface Message {
 }
 
 const SUGGESTED_QUESTIONS = [
-  "Can I see Charles Graham's resume?",
-  "What's your leadership philosophy?",
-  "Tell me about your technical skills",
-  "What are some fun facts about you?",
-  "What kind of projects have you worked on?",
-  "How do you approach mentoring?",
-  "What's your experience with AI?",
+  "What's your leadership style in one sentence?",
+  "What's your top technical skill?",
+  "Tell me one interesting fact about you",
+  "What's your favorite project?",
+  "Share one mentoring tip",
+  "How do you use AI?",
 ];
 
 export function AIChat() {
@@ -23,6 +22,7 @@ export function AIChat() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showSuggestions, setShowSuggestions] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -42,6 +42,7 @@ export function AIChat() {
     e.preventDefault();
     if (!input.trim()) return;
 
+    setShowSuggestions(false);
     const userMessage: Message = { role: 'user', content: input };
     setMessages(prev => [...prev, userMessage]);
     setInput('');
@@ -60,15 +61,37 @@ export function AIChat() {
         return;
       }
 
-      // Existing API call for other messages
+      // Modified API call to request concise responses
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: input, history: messages })
+        body: JSON.stringify({ 
+          message: input, 
+          history: messages,
+          options: {
+            concise: true,
+            maxLength: 150 // Limit response length
+          }
+        })
       });
 
       const data = await response.json();
-      setMessages(prev => [...prev, { role: 'assistant', content: data.response }]);
+      
+      // Split response into smaller chunks if it contains multiple points
+      const responses = data.response.split('\n\n').filter(Boolean);
+      
+      // Add each chunk as a separate message with a small delay
+      for (const response of responses) {
+        setMessages(prev => [...prev, { 
+          role: 'assistant', 
+          content: response.trim()
+        }]);
+        await new Promise(resolve => setTimeout(resolve, 500)); // Add delay between messages
+      }
+
+      setTimeout(() => {
+        setShowSuggestions(true);
+      }, 1000);
     } catch (error) {
       console.error('Error:', error);
     } finally {
@@ -121,9 +144,9 @@ export function AIChat() {
               <p className="text-sm text-gray-500 mt-1">Ask me anything about Charles's experience, projects, or interests!</p>
             </div>
 
-            {messages.length === 0 && (
-              <div className="p-4">
-                <p className="text-sm text-gray-500 mb-2">Suggested questions:</p>
+            {(messages.length === 0 || (showSuggestions && !isLoading)) && (
+              <div className="p-4 bg-gray-50">
+                <p className="text-sm text-gray-500 mb-2">Try asking:</p>
                 <div className="flex flex-wrap gap-2">
                   {SUGGESTED_QUESTIONS.map((question) => (
                     <button
@@ -156,7 +179,7 @@ export function AIChat() {
                         : 'bg-gray-100'
                     }`}
                   >
-                    {message.content}
+                    <p className="text-sm whitespace-pre-wrap">{message.content}</p>
                   </div>
                 </div>
               ))}

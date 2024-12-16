@@ -10,7 +10,7 @@ const PINECONE_API_KEY = process.env.PINECONE_API_KEY!;
 
 export async function POST(req: Request) {
   try {
-    const { message, history } = await req.json();
+    const { message, history, options } = await req.json();
     
     // Initialize Pinecone
     const pinecone = new Pinecone({
@@ -31,26 +31,59 @@ export async function POST(req: Request) {
 
     const llm = createOpenAIChain();
     const systemPrompt = `You are an AI assistant that answers questions about Charles Graham based on his resume, experience, and additional information. 
-    Use the following context to answer questions, but don't mention that you're using this context. Be professional but friendly.
-    If you're not sure about something, say so.
-    
+
     Resume Context:
     ${resumeContext}
 
     Additional Information:
     ${additionalContext}
 
-    Guidelines:
-    - Be conversational and engaging
-    - Share relevant anecdotes when appropriate
-    - Provide specific examples when possible
-    - Feel free to elaborate on technical topics
-    - You can make connections between different aspects of Charles's experience
-    - If asked about hobbies or personal interests, share from the provided context
-    `;
+    Response Guidelines:
+    - Provide complete, focused answers to the specific question asked
+    - Don't try to share everything at once - stick to what's most relevant
+    - Use natural breaks between different points
+    - Be conversational and professional
+    - For technical topics, give one clear example that fully illustrates the point
+    - For experience questions, share one complete story or example
+    - Use emojis sparingly to add personality
+    - For repeated questions, provide different perspectives or examples each time
+    - If a response needs multiple parts, make each part complete but focused
 
-    const fullPrompt = `${systemPrompt}\n\nUser: ${message}`;
-    const response = await llm.predict(fullPrompt);
+    Remember: 
+    - Answer the question fully, but don't add unnecessary information
+    - Keep responses focused on the specific question
+    - It's better to give one complete example than many partial ones
+    - Use the current timestamp ${Date.now()} to help vary responses for repeated questions`;
+
+    const fullPrompt = `${systemPrompt}\n\nUser: ${message}\nTimestamp: ${Date.now()}`;
+    let response = await llm.predict(fullPrompt);
+
+    // Format the response while preserving complete thoughts
+    if (options?.concise) {
+      // Split response only on clear breaks between thoughts
+      response = response
+        .split(/(?:\r?\n){2,}/)
+        .map(chunk => chunk.trim())
+        .filter(chunk => chunk.length > 0)
+        .map(chunk => {
+          // Preserve complete sentences within lists
+          if (chunk.includes('\n')) {
+            return chunk.split('\n')
+              .map(line => line.trim())
+              .filter(line => line.length > 0)
+              .join('\n');
+          }
+          return chunk;
+        })
+        .join('\n\n');
+
+      // Don't truncate responses, but ensure they're properly formatted
+      response = response
+        .split('\n\n')
+        .map(chunk => chunk.trim())
+        .filter(chunk => chunk.length > 0)
+        .join('\n\n');
+    }
 
     return NextResponse.json({ response });
   } catch (error) {
