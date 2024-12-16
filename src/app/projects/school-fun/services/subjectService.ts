@@ -23,8 +23,10 @@ export interface CourseDetails {
   cost: string;
   hoursPerWeek: string;
   modules: CourseModule[];
-  learningStyle: 'self-paced' | 'instructor-led' | 'hybrid';
+  learningStyle: LearningStyle;
 }
+
+export type LearningStyle = 'self-paced' | 'instructor-led' | 'hybrid';
 
 export interface CourseModule {
   title: string;
@@ -79,23 +81,36 @@ export async function getSubjectById(id: string): Promise<{
 // Course-related functions
 export async function getAllCourses(): Promise<CourseDetails[]> {
   await new Promise(resolve => setTimeout(resolve, 500));
-  return coursesData.courses;
+  return coursesData.courses.map(course => ({
+    ...course,
+    learningStyle: course.learningStyle as LearningStyle
+  }));
 }
 
 export async function getCourseById(id: string): Promise<CourseDetails | null> {
   await new Promise(resolve => setTimeout(resolve, 500));
   const course = coursesData.courses.find(course => course.id === id);
-  return course || null;
+  if (!course) return null;
+  
+  return {
+    ...course,
+    learningStyle: course.learningStyle as LearningStyle
+  };
 }
 
-export async function getFilteredCourses(filters: {
+interface FilterOptions {
   subject?: string;
   duration?: string;
   startDate?: string;
-  priceSort?: 'asc' | 'desc';
-}): Promise<CourseDetails[]> {
+  priceSort?: 'asc' | 'desc' | undefined;
+}
+
+export async function getFilteredCourses(filters: FilterOptions): Promise<CourseDetails[]> {
   await new Promise(resolve => setTimeout(resolve, 500));
-  let courses = coursesData.courses;
+  let courses = coursesData.courses.map(course => ({
+    ...course,
+    learningStyle: course.learningStyle as LearningStyle
+  }));
 
   if (filters.subject) {
     const subjectData = subjectsData.subjects.find(s => s.id === filters.subject);
@@ -104,11 +119,11 @@ export async function getFilteredCourses(filters: {
     }
   }
 
-  if (filters.duration) {
-    courses = courses.filter(course => course.length.startsWith(filters.duration));
+  if (filters.duration && filters.duration.length > 0) {
+    courses = courses.filter(course => course.length.startsWith(filters.duration!));
   }
 
-  if (filters.startDate) {
+  if (filters.startDate && filters.startDate.length > 0) {
     courses = courses.filter(course => 
       course.enrollBy.toLowerCase().includes(filters.startDate!.toLowerCase())
     );
@@ -129,5 +144,10 @@ export async function getFilteredCourses(filters: {
 export async function getFeaturedCourses(): Promise<CourseDetails[]> {
   await new Promise(resolve => setTimeout(resolve, 500));
   const featuredIds = featuredCoursesData.featuredCourses;
-  return coursesData.courses.filter(course => featuredIds.includes(course.id));
+  return coursesData.courses
+    .filter(course => featuredIds.includes(course.id))
+    .map(course => ({
+      ...course,
+      learningStyle: course.learningStyle as LearningStyle
+    }));
 } 

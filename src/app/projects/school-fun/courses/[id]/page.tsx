@@ -3,10 +3,8 @@ import { getCourseById } from '../../services/subjectService';
 import Image from 'next/image';
 
 interface Props {
-  params: Promise<{
-    id: string;
-  }>;
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
 export default async function CoursePage({ params, searchParams }: Props) {

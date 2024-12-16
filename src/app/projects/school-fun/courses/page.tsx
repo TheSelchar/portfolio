@@ -5,28 +5,47 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { CourseDetails, getFilteredCourses } from '../services/subjectService';
 
-interface FilterOptions {
+interface FilterState {
   subject: string;
   duration: string;
   startDate: string;
-  priceSort: '' | 'asc' | 'desc';
+  priceSort: 'asc' | 'desc' | undefined;
 }
 
 const CoursesPage = () => {
   const [courses, setCourses] = useState<CourseDetails[]>([]);
-  const [filters, setFilters] = useState<FilterOptions>({
+  const [filters, setFilters] = useState<FilterState>({
     subject: '',
     duration: '',
     startDate: '',
-    priceSort: '',
+    priceSort: undefined
   });
   const [loading, setLoading] = useState(true);
+
+  const handleFilterChange = (key: keyof FilterState, value: string) => {
+    if (key === 'priceSort') {
+      setFilters(prev => ({
+        ...prev,
+        [key]: value === '' ? undefined : value as 'asc' | 'desc'
+      }));
+    } else {
+      setFilters(prev => ({
+        ...prev,
+        [key]: value
+      }));
+    }
+  };
 
   useEffect(() => {
     const fetchCourses = async () => {
       setLoading(true);
       try {
-        const filteredCourses = await getFilteredCourses(filters);
+        const filteredCourses = await getFilteredCourses({
+          subject: filters.subject || undefined,
+          duration: filters.duration || undefined,
+          startDate: filters.startDate || undefined,
+          priceSort: filters.priceSort
+        });
         setCourses(filteredCourses);
       } catch (error) {
         console.error('Error fetching courses:', error);
@@ -36,13 +55,6 @@ const CoursesPage = () => {
 
     fetchCourses();
   }, [filters]);
-
-  const handleFilterChange = (key: keyof FilterOptions, value: string) => {
-    setFilters(prev => ({
-      ...prev,
-      [key]: value
-    }));
-  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -117,8 +129,8 @@ const CoursesPage = () => {
               </label>
               <select 
                 className="select select-bordered w-full"
-                value={filters.priceSort}
-                onChange={(e) => handleFilterChange('priceSort', e.target.value as '' | 'asc' | 'desc')}
+                value={filters.priceSort ?? ''}
+                onChange={(e) => handleFilterChange('priceSort', e.target.value)}
               >
                 <option value="">Sort by Price</option>
                 <option value="asc">Low to High</option>
