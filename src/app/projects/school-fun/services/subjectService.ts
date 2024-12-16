@@ -1,7 +1,8 @@
 import subjectsData from '../data/subjects.json';
-import featuredCoursesData from '../data/featuredCourses.json';
 import coursesData from '../data/courses.json';
+import featuredCoursesData from '../data/featuredCourses.json';
 
+// Basic course interface for subject listings
 export interface Course {
   id: string;
   title: string;
@@ -10,28 +11,7 @@ export interface Course {
   reward: string;
 }
 
-export interface Subject {
-  id: string;
-  title: string;
-  description: string;
-  courses: Course[];
-}
-
-export interface FeaturedCourse {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  length: string;
-  enrollBy: string;
-  cost: string;
-}
-
-export interface CourseModule {
-  title: string;
-  topics: string[];
-}
-
+// Full course details interface
 export interface CourseDetails {
   id: string;
   title: string;
@@ -46,70 +26,77 @@ export interface CourseDetails {
   learningStyle: 'self-paced' | 'instructor-led' | 'hybrid';
 }
 
-interface FeaturedCourseIds {
-  featuredCourses: string[];
+export interface CourseModule {
+  title: string;
+  topics: string[];
 }
 
-export const getSubjects = async (): Promise<Subject[]> => {
-  // Simulate API delay
+export interface Subject {
+  id: string;
+  title: string;
+  description: string;
+  courses: string[]; // Array of course IDs
+}
+
+// Subject-related functions
+export async function getSubjects(): Promise<Subject[]> {
   await new Promise(resolve => setTimeout(resolve, 500));
   return subjectsData.subjects;
-};
+}
 
-export const getSubjectById = async (id: string): Promise<Subject | null> => {
-  // Simulate API delay
+export async function getSubjectById(id: string): Promise<{
+  id: string;
+  title: string;
+  description: string;
+  courses: Course[];
+} | null> {
   await new Promise(resolve => setTimeout(resolve, 500));
-  const subject = subjectsData.subjects.find(subject => subject.id === id);
-  return subject || null;
-};
 
-export const getFeaturedCourses = async (): Promise<CourseDetails[]> => {
-  // Simulate API delay
+  const subject = subjectsData.subjects.find(s => s.id === id);
+  if (!subject) return null;
+
+  const fullCourses = subject.courses.map(courseId => {
+    const course = coursesData.courses.find(c => c.id === courseId);
+    if (!course) return null;
+    
+    return {
+      id: course.id,
+      title: course.title,
+      description: course.description,
+      duration: course.length,
+      reward: 'Certificate'
+    };
+  }).filter((course): course is Course => course !== null);
+
+  return {
+    id: subject.id,
+    title: subject.title,
+    description: subject.description,
+    courses: fullCourses
+  };
+}
+
+// Course-related functions
+export async function getAllCourses(): Promise<CourseDetails[]> {
   await new Promise(resolve => setTimeout(resolve, 500));
-  
-  // Get featured course IDs
-  const featuredIds = featuredCoursesData.featuredCourses;
-  
-  // Get full course details for each featured ID
-  const featuredCourses = coursesData.courses.filter(course => 
-    featuredIds.includes(course.id)
-  );
-  
-  return featuredCourses;
-};
+  return coursesData.courses;
+}
 
-export const getFeaturedCourseById = async (id: string): Promise<FeaturedCourse | null> => {
-  // Simulate API delay
-  await new Promise(resolve => setTimeout(resolve, 500));
-  const featuredCourse = featuredCoursesData.featuredCourses.find(course => course.id === id);
-  return featuredCourse || null;
-};
-
-export const getCourseById = async (id: string): Promise<CourseDetails | null> => {
-  // Simulate API delay
+export async function getCourseById(id: string): Promise<CourseDetails | null> {
   await new Promise(resolve => setTimeout(resolve, 500));
   const course = coursesData.courses.find(course => course.id === id);
   return course || null;
-};
+}
 
-export const getAllCourses = async (): Promise<CourseDetails[]> => {
-  // Simulate API delay
+export async function getFilteredCourses(filters: {
+  subject?: string;
+  duration?: string;
+  startDate?: string;
+  priceSort?: 'asc' | 'desc';
+}): Promise<CourseDetails[]> {
   await new Promise(resolve => setTimeout(resolve, 500));
-  return coursesData.courses;
-};
-
-// Add filter function
-export const getFilteredCourses = async (
-  filters: {
-    subject?: string;
-    duration?: string;
-    startDate?: string;
-    priceSort?: 'asc' | 'desc';
-  }
-): Promise<CourseDetails[]> => {
   let courses = coursesData.courses;
 
-  // Apply filters
   if (filters.subject) {
     const subjectData = subjectsData.subjects.find(s => s.id === filters.subject);
     if (subjectData) {
@@ -122,7 +109,9 @@ export const getFilteredCourses = async (
   }
 
   if (filters.startDate) {
-    courses = courses.filter(course => course.enrollBy.toLowerCase().includes(filters.startDate.toLowerCase()));
+    courses = courses.filter(course => 
+      course.enrollBy.toLowerCase().includes(filters.startDate!.toLowerCase())
+    );
   }
 
   if (filters.priceSort) {
@@ -134,4 +123,11 @@ export const getFilteredCourses = async (
   }
 
   return courses;
-}; 
+}
+
+// Featured courses functions
+export async function getFeaturedCourses(): Promise<CourseDetails[]> {
+  await new Promise(resolve => setTimeout(resolve, 500));
+  const featuredIds = featuredCoursesData.featuredCourses;
+  return coursesData.courses.filter(course => featuredIds.includes(course.id));
+} 
