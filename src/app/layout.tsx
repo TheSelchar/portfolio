@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Your Portfolio",
+  title: "Charles' Portfolio",
   description: "Personal portfolio website",
 };
 
@@ -15,10 +15,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} bg-base-100`}>
+    <html lang="en" className="h-full">
+      <body className={`${inter.className} min-h-full flex flex-col bg-base-100`}>
         <Navbar />
-        {children}
+        <main className="flex-grow relative">
+          {children}
+        </main>
       </body>
     </html>
   );

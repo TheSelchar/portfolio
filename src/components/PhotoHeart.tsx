@@ -84,7 +84,7 @@ const PhotoHeart = () => {
 
   if (isMobile) {
     return (
-      <div className="relative w-full h-full overflow-hidden">
+      <div className="relative w-full h-full">
         <div className="absolute inset-0 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 gap-1 p-2">
           {mobilePhotos.map((photo) => (
             <div

@@ -113,7 +113,7 @@ export function AIChat() {
       {/* Chat Icon */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-8 right-8 p-4 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-colors"
+        className="fixed bottom-8 right-8 p-4 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-colors z-[9999]"
       >
         <svg
           className="w-6 h-6"
@@ -145,17 +145,35 @@ export function AIChat() {
               backgroundColor: 'white',
               borderRadius: '0.5rem',
               boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
-              zIndex: 1000
+              zIndex: 9999
             }}
           >
-            <div className="p-4 border-b">
-              <h3 className="text-lg font-medium">Chat with AI Charles</h3>
-              <p className="text-sm text-gray-500 mt-1">Ask me anything about Charles's experience, projects, or interests!</p>
+            <div className="p-4 border-b bg-blue-600 text-white rounded-t-lg flex justify-between items-center">
+              <h3 className="text-lg font-medium text-white">Chat with AI Charles</h3>
+              <button 
+                onClick={() => setIsOpen(false)}
+                className="hover:bg-blue-700 p-1 rounded transition-colors"
+                aria-label="Close chat"
+              >
+                <svg 
+                  className="w-6 h-6" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={2} 
+                    d="M20 12H4"
+                  />
+                </svg>
+              </button>
             </div>
 
             {(messages.length === 0 || (showSuggestions && !isLoading)) && (
-              <div className="p-4 bg-gray-50">
-                <p className="text-sm text-gray-500 mb-2">Try asking:</p>
+              <div className="p-4 bg-blue-50">
+                <p className="text-sm text-blue-600 font-medium mb-2">Try asking:</p>
                 <div className="flex flex-wrap gap-2">
                   {SUGGESTED_QUESTIONS.map((question) => (
                     <button
@@ -164,7 +182,7 @@ export function AIChat() {
                         setInput(question);
                         handleSubmit(new Event('submit') as any);
                       }}
-                      className="text-sm bg-gray-100 hover:bg-gray-200 rounded-full px-3 py-1 transition-colors"
+                      className="text-sm bg-white hover:bg-blue-100 text-blue-600 rounded-full px-3 py-1 transition-colors shadow-sm"
                     >
                       {question}
                     </button>
@@ -188,7 +206,11 @@ export function AIChat() {
                         : 'bg-gray-100'
                     }`}
                   >
-                    <p className="text-sm whitespace-pre-wrap">{message.content}</p>
+                    <p className={`text-sm whitespace-pre-wrap ${
+                      message.role === 'user'
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-gray-100'
+                    }`}>{message.content}</p>
                   </div>
                 </div>
               ))}

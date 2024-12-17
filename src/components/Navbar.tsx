@@ -2,35 +2,56 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside as EventListener);
+    document.addEventListener('touchstart', handleClickOutside as EventListener);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside as EventListener);
+      document.removeEventListener('touchstart', handleClickOutside as EventListener);
+    };
+  }, []);
 
   return (
-    <div className="navbar bg-[url('/images/abstract-background.svg')] bg-cover bg-center border-b mt-5">
+    <div className="navbar bg-[url('/images/abstract-background.svg')] bg-cover bg-center border-b mt-5 sticky top-0 z-50">
       {/* Mobile Menu Button */}
       <div className="navbar-start">
-        <div className="dropdown">
+        <div className="dropdown" ref={menuRef}>
           <button 
-            className="btn btn-ghost lg:hidden"
+            className="btn btn-ghost lg:hidden touch-auto"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
+            aria-label="Toggle menu"
+          >
             <svg className="h-5 w-5 text-neutral-900" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
             </svg>
           </button>
           {/* Mobile Menu */}
           {isMenuOpen && (
-            <ul className="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow bg-base-100 rounded-box w-52">
+            <ul className="menu menu-sm dropdown-content mt-3 z-[100] p-2 shadow bg-base-100 rounded-box w-52 absolute">
               <li><Link href="/" onClick={() => setIsMenuOpen(false)}>Home</Link></li>
               <li><Link href="/resume" onClick={() => setIsMenuOpen(false)}>Resume</Link></li>
               <li>
-                <span>Projects</span>
-                <ul className="p-2 bg-base-100">
-                  <li><Link href="/projects/store-fun" onClick={() => setIsMenuOpen(false)}>Store Example</Link></li>
-                  <li><Link href="/projects/school-fun" onClick={() => setIsMenuOpen(false)}>School Example</Link></li>
-                </ul>
+                <details>
+                  <summary>Projects</summary>
+                  <ul className="p-2 bg-base-100">
+                    <li><Link href="/projects/store-fun" onClick={() => setIsMenuOpen(false)}>Store Example</Link></li>
+                    <li><Link href="/projects/school-fun" onClick={() => setIsMenuOpen(false)}>School Example</Link></li>
+                  </ul>
+                </details>
               </li>
             </ul>
           )}
