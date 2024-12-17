@@ -75,6 +75,11 @@ export function AIChat() {
         })
       });
 
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to get response');
+      }
+
       const data = await response.json();
       
       // Split response into smaller chunks if it contains multiple points
@@ -93,7 +98,11 @@ export function AIChat() {
         setShowSuggestions(true);
       }, 1000);
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Chat error:', error);
+      setMessages(prev => [...prev, { 
+        role: 'assistant', 
+        content: 'Sorry, I encountered an error. Please try again later.'
+      }]);
     } finally {
       setIsLoading(false);
     }
