@@ -203,7 +203,7 @@ const SchoolFunPage = async () => {
 
               <div className="flex justify-center mt-12">
                 <Link 
-                  href="/projects/school-fun/about"
+                  href="/projects/school-fun/more-info"
                   className="btn btn-lg bg-white text-primary hover:bg-white/90 border-0 shadow-lg hover:shadow-xl transition-all duration-300 text-sm md:text-base w-full md:w-auto max-w-md mx-auto"
                 >
                   Learn More About The OBS Online Learning Model

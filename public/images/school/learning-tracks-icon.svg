@@ -1,0 +1,15 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g class="transition-transform duration-500 group-hover:translate-x-1">
+    <path d="M16 32H48" stroke="#2563EB" stroke-width="4" stroke-linecap="round" class="transition-all duration-300 group-hover:stroke-primary-focus"/>
+    <circle cx="24" cy="32" r="4" fill="white" stroke="#2563EB" stroke-width="4" class="animate-pulse"/>
+    <circle cx="40" cy="32" r="4" fill="white" stroke="#2563EB" stroke-width="4" class="animate-pulse delay-100"/>
+  </g>
+  <g class="transition-transform duration-500 group-hover:-translate-x-1">
+    <path d="M16 16H48" stroke="#2563EB" stroke-width="4" stroke-linecap="round" class="transition-all duration-300 group-hover:stroke-primary-focus"/>
+    <circle cx="32" cy="16" r="4" fill="white" stroke="#2563EB" stroke-width="4" class="animate-pulse delay-200"/>
+  </g>
+  <g class="transition-transform duration-500 group-hover:translate-x-1">
+    <path d="M16 48H48" stroke="#2563EB" stroke-width="4" stroke-linecap="round" class="transition-all duration-300 group-hover:stroke-primary-focus"/>
+    <circle cx="36" cy="48" r="4" fill="white" stroke="#2563EB" stroke-width="4" class="animate-pulse delay-300"/>
+  </g>
+</svg> 

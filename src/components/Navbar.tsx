@@ -93,10 +93,10 @@ const Navbar = () => {
           rel="noopener noreferrer"
         >
           <Image
-            src="/images/Li-logo-bk.png"
+            src="/images/linkedin-logo-png-2032.png"
             alt="LinkedIn"
-            width={100}
-            height={100}
+            width={125}
+            height={125}
             className="mr-2"
           />
         </a>

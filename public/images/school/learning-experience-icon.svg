@@ -1,0 +1,8 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M32 12L16 20V36C16 43.732 22.768 50.856 32 52C41.232 50.856 48 43.732 48 36V20L32 12Z" stroke="#2563EB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="transition-all duration-300 group-hover:stroke-primary-focus"/>
+  <path d="M32 24V36" stroke="#2563EB" stroke-width="4" stroke-linecap="round" class="origin-bottom transition-all duration-300 group-hover:scale-110"/>
+  <path d="M32 44H32.02" stroke="#2563EB" stroke-width="4" stroke-linecap="round" class="animate-pulse"/>
+  <path d="M24 20L32 24L40 20" stroke="#2563EB" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="transition-all duration-300 group-hover:translate-y-1"/>
+  <path d="M20 36V28" stroke="#2563EB" stroke-width="4" stroke-linecap="round" class="origin-bottom transition-all duration-300 group-hover:scale-y-110"/>
+  <path d="M44 36V28" stroke="#2563EB" stroke-width="4" stroke-linecap="round" class="origin-bottom transition-all duration-300 group-hover:scale-y-110"/>
+</svg> 
