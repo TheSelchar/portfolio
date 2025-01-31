@@ -43,7 +43,7 @@ const Navbar = () => {
           {isMenuOpen && (
             <ul className="menu menu-sm dropdown-content mt-3 z-[100] p-2 shadow bg-base-100 rounded-box w-52 absolute">
               <li><Link href="/" onClick={() => setIsMenuOpen(false)}>Home</Link></li>
-              <li><Link href="/resume" onClick={() => setIsMenuOpen(false)}>Resume</Link></li>
+              <li>/*<Link href="/resume" onClick={() => setIsMenuOpen(false)}>Resume</Link>*/</li>
               <li>
                 <details>
                   <summary>Projects</summary>
@@ -61,7 +61,7 @@ const Navbar = () => {
       {/* Desktop Menu */}
       <div className="navbar-center lg:flex items-center">
         <ul className="menu menu-horizontal px-1 hidden lg:flex">
-          <li><Link href="/resume">Resume</Link></li>
+          <li>/*<Link href="/resume">Resume</Link>*/</li>
         </ul>
         <Link href="/" className="flex flex-col items-center mx-4">
           <Image
